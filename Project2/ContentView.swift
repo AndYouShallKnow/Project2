@@ -52,11 +52,9 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .renderingMode(.original)
+                            FlagImage(text: countries[number])
                         }
-                        .shadow(radius: 5.0)
-                        .clipShape(Capsule())
+
                     }
                     
                 }.frame(maxWidth: .infinity)
@@ -123,7 +121,16 @@ func printWarning() -> Void {
 }
 
 
+struct FlagImage: View {
+    var text: String
 
+    var body: some View {
+        Image(text)
+            .renderingMode(.original)
+            .shadow(radius: 5.0)
+            .clipShape(Capsule())
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
